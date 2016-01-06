@@ -1,0 +1,68 @@
+char a;
+int APP1 = A5; 
+int APP2 = A4; 
+int APP3 = A3; 
+
+void setup()
+{
+  pinMode(APP1, OUTPUT);
+  pinMode(APP2, OUTPUT);
+  pinMode(APP3, OUTPUT);
+  Serial.begin(38400);
+  digitalWrite(APP1, LOW);
+  digitalWrite(APP2, LOW);
+  digitalWrite(APP3, LOW);
+}
+void loop()
+{    
+  if(Serial.available())
+  {
+    a=Serial.read();
+    if(a=='1'){
+      digitalWrite(APP1, HIGH);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A5));
+    }
+    if(a=='2'){
+      digitalWrite(APP1, LOW);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A5));
+    }
+
+    if(a=='3'){
+      digitalWrite(APP2, HIGH);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A4));
+    }
+    if(a=='4'){
+      digitalWrite(APP2, LOW);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A4));
+    }
+
+    if(a=='5'){
+      digitalWrite(APP3, HIGH);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A3));
+    }
+    if(a=='6'){
+      digitalWrite(APP3, LOW);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A3));
+    }
+
+    if(a=='7'){
+      digitalWrite(APP3, LOW);
+      digitalWrite(APP2, LOW);
+      digitalWrite(APP1, LOW);
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A5));
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A4));
+      Serial.print("PIU=");
+      Serial.println(digitalRead(A3));
+    }
+
+  }
+}
+
